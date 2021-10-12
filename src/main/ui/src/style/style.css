@@ -16,6 +16,37 @@
   text-align: left;
 }
 
+.Comment-Section {
+  width: 50vw;
+  min-width: 600px;
+}
+.Comment {
+  border-top: ridge;
+  border-top-width: 1px;
+  border-color: white;
+  margin-bottom: 10px;
+}
+.Comment .Details {
+  font-size: 85%;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.Comment .Post {
+  margin-bottom: 5px;
+}
+.Comment .Meta {
+  font-size: 80%;
+}
+.Comment .Meta #like {
+  height: 2vh;
+  color: rgb(104, 180, 104);
+  margin-right: 6px;
+}
+.Comment .Meta #dislike {
+  height: 2vh;
+  color: rgb(252, 50, 50);
+}
+
 a {
   color: rgb(0, 153, 255);
 }

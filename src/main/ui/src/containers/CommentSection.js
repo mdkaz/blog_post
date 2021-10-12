@@ -22,7 +22,7 @@ export class CommentSection extends React.Component {
   render() {
     return (
       <div>
-        <h1>Comments</h1>
+        <h1>{this.state.numComments} Comments</h1>
         {this.showComments(this.state.numComments)}
       </div>
     );

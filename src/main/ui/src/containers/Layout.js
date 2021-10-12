@@ -4,6 +4,7 @@ import "../style/style.css";
 
 import { Header } from "../components/Header";
 import { Content } from "../components/Content";
+import { HorizontalBar } from "../components/HorizontalBar";
 import { CommentSection } from "./CommentSection";
 
 export class Layout extends React.Component {
@@ -16,16 +17,8 @@ export class Layout extends React.Component {
         <div class="Content">
           <Content />
         </div>
-        <hr
-          style={{
-            borderStyle: "solid",
-            borderBottomColor: "white",
-            borderBottomWidth: 1,
-            width: "50vw",
-            marginLeft: 0,
-          }}
-        />
-        <div class="Comments">
+        <HorizontalBar width="50vw" minWidth="600px" barWidth={1} />
+        <div class="Comment-Section">
           <CommentSection />
         </div>
       </div>
