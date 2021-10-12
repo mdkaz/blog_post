@@ -1,0 +1,35 @@
+.Layout {
+  width: 60vw;
+  min-width: 700px;
+  margin: 0 auto;
+  color: white;
+}
+
+.Header {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.Content {
+  width: 50vw;
+  min-width: 600px;
+  text-align: left;
+}
+
+a {
+  color: rgb(0, 153, 255);
+}
+
+.Image-Pane {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: darkgray;
+  font-size: 80%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
