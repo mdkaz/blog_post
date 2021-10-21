@@ -24,9 +24,10 @@ export class Content extends React.Component {
           <a href="https://www.theverge.com/2021/6/24/22548428/microsoft-windows-11-android-apps-support-amazon-store">
             running Android apps for the first time
           </a>
+          .
         </p>
         <p>
-          . The first thing you’ll notice about Windows 11 is that it includes a
+          The first thing you’ll notice about Windows 11 is that it includes a
           new Start menu and updated Start button that are both centered on the
           taskbar. This UI is very similar to what we first saw in Windows 10X,
           a project originally planned for dual-screen devices that Microsoft
@@ -48,7 +49,9 @@ export class Content extends React.Component {
         </p>
         <div class="Image-Pane">
           <img src={snapLayout} alt="snap" id="img1" />
-          <text>Windows 11 Snap layouts</text>
+          <div>
+            <text class="Caption">Windows 11 Snap layouts</text>
+          </div>
         </div>
         <p>
           There’s also something Microsoft is calling Snap Layouts, which allow
@@ -70,7 +73,9 @@ export class Content extends React.Component {
         </p>
         <div class="Image-Pane">
           <img src={microsoftTeams} alt="microsoft-teams" id="Img2" />
-          <text>Microsoft Teams in Windows 11</text>
+          <div>
+            <text class="Caption">Microsoft Teams in Windows 11</text>
+          </div>
         </div>
         <p>
           Microsoft is also integrating Microsoft Teams directly into Windows 11
@@ -97,7 +102,9 @@ export class Content extends React.Component {
         </p>
         <div class="Image-Pane">
           <img src={widgets} alt="widgets" id="Img3" />
-          <text>Windows Widgets</text>
+          <div>
+            <text class="Caption">Windows Widgets</text>
+          </div>
         </div>
         <p>
           Microsoft is also improving the gestures you can use on tablets and
@@ -120,7 +127,9 @@ export class Content extends React.Component {
         </p>
         <div class="Image-Pane">
           <img src={xboxApp} alt="xbox-app" id="Img4" />
-          <text>New Xbox app in Windows 11</text>
+          <div>
+            <text class="Caption">New Xbox app in Windows 11</text>
+          </div>
         </div>
         <p>
           Microsoft is also promising speed and performance improvements for
@@ -138,7 +147,11 @@ export class Content extends React.Component {
         </p>
         <div class="Image-Pane">
           <img src={androidApps} alt="android-apps" id="Img5" />
-          <text>The new Windows 11 app store with Android apps</text>
+          <div>
+            <text class="Caption">
+              The new Windows 11 app store with Android apps
+            </text>
+          </div>
         </div>
         <p>
           Finally, one of the biggest parts of Windows 11 is the new store and{" "}

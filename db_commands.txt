@@ -1,0 +1,12 @@
+Restart server:
+pg_ctl.exe restart -D "C:\Program Files\PostgreSQL\14\data"
+
+Connect to Server:
+psql -U postgres
+
+List databases:
+\l 
+
+Connect to database:
+\c db_name
+

@@ -17,7 +17,11 @@ export class Header extends React.Component {
         </div>
         <div class="Image-Pane">
           <img src={headerImg} alt="Windows-11" id="headerImg" />
-          <text>A new version of Windows is officially on the way</text>
+          <div>
+            <text class="Caption">
+              A new version of Windows is officially on the way
+            </text>
+          </div>
         </div>
       </div>
     );

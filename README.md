@@ -1,6 +1,6 @@
 ### Created by Michael Kazierad
 
----
+Blog content originally found [here](https://www.theverge.com/2021/6/24/22546791/microsoft-windows-11-announcement-features-updates#:~:text=The%20first%20thing%20you'll,both%20centered%20on%20the%20taskbar.&text=Windows%2011%20Snap%20layouts.,modes%20that%20Windows%2011%20supports)
 
 # Frameworks/Technologies
 
