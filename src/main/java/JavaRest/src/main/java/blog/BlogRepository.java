@@ -25,6 +25,7 @@ public class BlogRepository {
         }
     }
 
+    // inserts a user to the usertable with a unique userid
     public void insertUser(String userid, String name) {
         query = "insert into users (userid, name) values ('" + userid + "', '" + escapeQuoteHelper(name) + "');";
         try {
@@ -35,6 +36,7 @@ public class BlogRepository {
         }
     }
 
+    // inserts comment into comments table under a unique commentid
     public void insertComment(String userid, String commentid, Timestamp posted, String text) {
         query = "insert into comments (userid, commentid, posted, text, likes, dislikes) values ('" + userid + "', '"
                 + commentid + "', '" + posted + "', '" + escapeQuoteHelper(text) + "', 0, 0);";
@@ -46,6 +48,8 @@ public class BlogRepository {
         }
     }
 
+    // inserts a reply into the replies table under a unique commentid and a
+    // referencing parentid
     public void insertReply(String userid, String commentid, String parentid, Timestamp posted, String text) {
         query = "insert into replies (userid, commentid, parentid, posted, text, likes, dislikes) values ('" + userid
                 + "', '" + commentid + "', '" + parentid + "', '" + posted + "', '" + escapeQuoteHelper(text)
@@ -58,6 +62,7 @@ public class BlogRepository {
         }
     }
 
+    // returns a hashmap representing all of the users
     public HashMap<String, HashMap<String, String>> users() {
         HashMap<String, HashMap<String, String>> result = new HashMap<>();
         HashMap<String, String> userDetails;
@@ -79,6 +84,7 @@ public class BlogRepository {
         return result;
     }
 
+    // returns a sorted treemap of all the comments
     public TreeMap<String, HashMap<String, String>> comments() {
         TreeMap<String, HashMap<String, String>> result = new TreeMap<>(Collections.reverseOrder());
         HashMap<String, String> commentDetails;
@@ -104,6 +110,7 @@ public class BlogRepository {
         return result;
     }
 
+    // returns a hashmap of replies
     public HashMap<String, List<HashMap<String, String>>> replies() {
         HashMap<String, List<HashMap<String, String>>> result = new HashMap<>();
         HashMap<String, String> replyDetails;
@@ -138,6 +145,7 @@ public class BlogRepository {
         return result;
     }
 
+    // adds a like to the comment with commentid (in replies or comments table)
     public void addLike(String commentid, String table) {
         query = "update " + table + " set likes = likes + 1 where " + table + ".commentid = '" + commentid + "';";
         try {
@@ -148,6 +156,7 @@ public class BlogRepository {
         }
     }
 
+    // adds a dislike to the comment with commentid (in replies or comments table)
     public void addDislike(String commentid, String table) {
         query = "update " + table + " set dislikes = dislikes + 1 where " + table + ".commentid = '" + commentid + "';";
         try {
@@ -158,6 +167,46 @@ public class BlogRepository {
         }
     }
 
+    // switches a dislike to a like to the comment with commentid (in replies or
+    // comments table)
+    public void switchLike(String commentid, String table) {
+        query = "update " + table + " set likes = likes - 1 where " + table + ".commentid = '" + commentid + "';";
+        String query2 = "update " + table + " set dislikes = dislikes + 1 where " + table + ".commentid = '" + commentid
+                + "';";
+        try {
+            stmt = connection.createStatement();
+            connection.setAutoCommit(false);
+            stmt.addBatch(query);
+            stmt.addBatch(query2);
+            stmt.executeBatch();
+            System.out.println("committing dislike");
+            connection.commit();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    // switches a like to a dislike to the comment with commentid (in replies or
+    // comments table)
+    public void switchDislike(String commentid, String table) {
+        query = "update " + table + " set dislikes = dislikes - 1 where " + table + ".commentid = '" + commentid + "';";
+        String query2 = "update " + table + " set likes = likes + 1 where " + table + ".commentid = '" + commentid
+                + "';";
+        try {
+            stmt = connection.createStatement();
+            connection.setAutoCommit(false);
+            stmt.addBatch(query);
+            stmt.addBatch(query2);
+            stmt.executeBatch();
+            System.out.println("committing like");
+            connection.commit();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    // helper function to escape quotes in comments, replies, or usernames: prevents
+    // sqlexceptions
     private String escapeQuoteHelper(String input) {
         int curr = input.indexOf("'", 0), length = input.length();
         while (curr != -1) {

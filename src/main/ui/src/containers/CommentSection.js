@@ -16,10 +16,12 @@ export class CommentSection extends React.Component {
     };
   }
 
+  //retreive the comment section from the backend when page is loaded
   componentDidMount() {
     this.retreiveComments();
   }
 
+  //makes get request through axios to backend to populate the comment section
   retreiveComments = () => {
     axios.get("/getCommentSection").then((response) => {
       this.setState({
@@ -29,6 +31,7 @@ export class CommentSection extends React.Component {
     });
   };
 
+  //using the 'comment' state derived from the backend, creates comment/reply components for rendering
   showComments() {
     let commentList = [];
     this.state.comments.forEach((comm) => {
@@ -51,6 +54,7 @@ export class CommentSection extends React.Component {
         />
       );
       if (comm.replies != null) {
+        //if the comment has replies push the replies to the list
         comm.replies.forEach((reply) => {
           var replyName = reply.name;
           var commentid = reply.commentid;
@@ -79,14 +83,17 @@ export class CommentSection extends React.Component {
     return commentList;
   }
 
+  //updates state when user is writing their name
   handleUserChange = (e) => {
     this.setState({ ...this.state, userCreateInput: e.target.value });
   };
 
+  //updates state when user is writing a comment
   handleCommentChange = (e) => {
     this.setState({ ...this.state, userCommentInput: e.target.value });
   };
 
+  //called when post comment button is clicked. sends post request through axios and then updates the state to reflect the new comment section.
   handlePost = (e) => {
     e.preventDefault();
     if (
